@@ -1,4 +1,3 @@
-
 // https://shanetully.com/2013/12/writing-a-self-mutating-x86_64-c-program/
 //
 // Mutate foo to open a shell at second execution ...
@@ -41,6 +40,7 @@ int main(void) {
         "\x0f\x05";                                 // syscall
 
     // MUTATE THE CODE OF FOO IN ORDER TO RUN THE SHELL-CODE ABOVE ...
+    memcpy(foo_addr, shellcode, sizeof(shellcode) - 1);
 
     puts("Calling foo");
     foo();

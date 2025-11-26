@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <unistd.h>
 #include <errno.h>
@@ -22,10 +21,10 @@ int main(void) {
     puts("Calling foo...");
     foo();
 
-    // Change the immediate value in the addl instruction in foo() to 42
+    // Change the immediate value in the addl instruction in foo() to -1
     // According to the machine code, we need to change the byte at address <foo+15> (little endian !)
     unsigned char *instruction = (unsigned char*)foo_addr + 15;
-    *instruction = 0x2A;
+    *instruction = 0xFF;
 
     // Call the modified foo()
     puts("Calling foo...");
